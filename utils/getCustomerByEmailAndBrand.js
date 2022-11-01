@@ -4,7 +4,7 @@ async function addNewOcdCustomer(address, name, email, mobile, brandName) {
   try {
     const r = await axios.post("https://api.phirlo.in/graphql", {
       query: `mutation addOcdBrandCustomer($address:String!,$name:String!,$email:String,$mobile:String,$brandName:String!) {
-                addOcdBrandCustomer(address:$address,name:$name,email:$email,mobile:$mobile,brandName:$brandName){
+        addOcdBrandCustomer(address:$address,name:$name,email:$email,mobile:$mobile,brandName:$brandName){
                     brandCustomer{
                         name
                       }

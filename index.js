@@ -67,12 +67,16 @@ app.post("/webhook", async (req, res) => {
       details.address,
       details.customer_info.name,
       details.customer_info.email,
-      details.customer_info.phone ? details.customer_info.phone : "NIL",
+      details.customer_info.phone
+        ? details.customer_info.phone.replace("+", "")
+        : "NIL",
       "Phirlo Test Store"
     );
 
     const newConsignment = await addNewOcdConsignment(
-      details.customer_info.email,
+      details.customer_info.email
+        ? details.customer_info.email
+        : details.customer_info.phone.replace("+", ""),
       `${details.customer_info.name}'s OCD Consignment #${data.id}`,
       "Phirlo Test Store",
       id
